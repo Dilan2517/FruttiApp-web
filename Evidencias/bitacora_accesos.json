@@ -1,0 +1,47 @@
+[
+ {
+  "usuario": "dilan@gmail.com",
+  "fechaHora": "2026-09-03T14:25:12.346",
+  "exitoso": false
+ },
+ {
+  "usuario": "admin@gmail.com",
+  "fechaHora": "2026-09-03T14:25:33.193",
+  "exitoso": true
+ },
+ {
+  "usuario": "admin@gmail.com",
+  "fechaHora": "2026-09-03T14:25:51.687",
+  "exitoso": true
+ },
+ {
+  "usuario": "admin@gmail.com",
+  "fechaHora": "2026-09-03T14:25:59.220",
+  "exitoso": true
+ },
+ {
+  "usuario": "dilan2@gmail.com",
+  "fechaHora": "2026-09-03T14:26:30.053",
+  "exitoso": false
+ },
+ {
+  "usuario": "dilan1@gmail.com",
+  "fechaHora": "2026-09-03T14:26:33.713",
+  "exitoso": false
+ },
+ {
+  "usuario": "admin@gmail.com",
+  "fechaHora": "2026-09-03T14:26:43.497",
+  "exitoso": true
+ },
+ {
+  "usuario": "admin@gmail.com",
+  "fechaHora": "2026-09-03T14:27:56.536",
+  "exitoso": false
+ },
+ {
+  "usuario": "admin@gmail.com",
+  "fechaHora": "2026-09-03T14:28:05.219",
+  "exitoso": true
+ }
+]
