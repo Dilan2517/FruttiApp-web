@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'home_page.dart';
 import '../models/access_record.dart';
 import '../services/access_log_service.dart';
+import '../services/preferences_service.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -9,7 +10,6 @@ class LoginPage extends StatefulWidget {
   @override
   State<LoginPage> createState() => _LoginPageState();
 }
-
 
 class _LoginPageState extends State<LoginPage> {
   final _formKey = GlobalKey<FormState>();
@@ -24,13 +24,29 @@ class _LoginPageState extends State<LoginPage> {
   bool _ocultarPassword = true;
 
   @override
+  void initState() {
+    super.initState();
+    _cargarUsuarioRecordado();
+  }
+
+  Future<void> _cargarUsuarioRecordado() async {
+    final usuario = await PreferencesService.obtenerUsuarioRecordado();
+    if (usuario != null) {
+      setState(() {
+        _correoController.text = usuario;
+        _recordarme = true;
+      });
+    }
+  }
+
+  @override
   void dispose() {
     _correoController.dispose();
     _passwordController.dispose();
     super.dispose();
   }
 
-  void _ingresar() {
+  Future<void> _ingresar() async {
     if (_formKey.currentState!.validate()) {
       final usuario = _correoController.text.trim();
       final password = _passwordController.text;
@@ -47,6 +63,15 @@ class _LoginPageState extends State<LoginPage> {
           exitoso: exitoso,
         ),
       );
+
+      // Recordar o eliminar el usuario según el checkbox
+      if (_recordarme) {
+        await PreferencesService.guardarUsuario(usuario);
+      } else {
+        await PreferencesService.olvidarUsuario();
+      }
+
+      if (!mounted) return;
 
       if (exitoso) {
         Navigator.pushReplacement(
